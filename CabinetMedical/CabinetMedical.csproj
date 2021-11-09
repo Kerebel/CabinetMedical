@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>KEREBEL Bastien</Authors>
+    <RepositoryUrl>https://github.com/Kerebel/CabinetMedical</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageId>CabinetMedical.Kerebel</PackageId>
+    <Description>Cettte bibliothèque propose un large éventail de fonctionallités dans le cadre de la gestion d'un cabinet médical.</Description>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

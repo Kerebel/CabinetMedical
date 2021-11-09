@@ -14,6 +14,9 @@ namespace CabinetMedical.ClassesMetier
     /// </summary>
     public class Prestation
     {
+        private int prixFixe = 250;
+        private int prixCourant;
+        private Cotation cotation;
         private string libelle;
         private DateTime dateHeureSoin;
         private Intervenant intervenant;
@@ -23,7 +26,7 @@ namespace CabinetMedical.ClassesMetier
         /// </summary>
         /// <param name="libelle">Libelle de la classe Prestation.</param>
         /// <param name="dateHeureSoin">La date de la prestation.</param>
-        public Prestation(string libelle, DateTime dateHeureSoin)
+        public Prestation(string libelle, DateTime dateHeureSoin, int prixCourant, Cotation cotation)
         {
             this.Libelle = libelle;
 
@@ -36,6 +39,8 @@ namespace CabinetMedical.ClassesMetier
             {
                 throw new CabinetMedicalException("La date de prestation ne peut pas être après le jour actuel");
             }
+            this.prixCourant = cotation.Indice * this.prixFixe;
+            this.cotation = cotation;
         }
 
         /// <summary>
@@ -44,8 +49,8 @@ namespace CabinetMedical.ClassesMetier
         /// <param name="libelle">Libelle de la classe Prestation.</param>
         /// <param name="dateHeureSoin">La date de la prestation.</param>
         /// <param name="intervenant">Objet intervenant de la classe Interveant.</param>
-        public Prestation(string libelle, DateTime dateHeureSoin, Intervenant intervenant)
-            : this(libelle, dateHeureSoin)
+        public Prestation(string libelle, DateTime dateHeureSoin, int prixCourant, Cotation cotation, Intervenant intervenant)
+            : this(libelle, dateHeureSoin, prixCourant, cotation)
         {
             this.intervenant = intervenant;
         }
@@ -64,6 +69,9 @@ namespace CabinetMedical.ClassesMetier
         /// Gets or sets.
         /// </summary>
         public Intervenant Intervenant { get => this.intervenant; set => this.intervenant = value; }
+        public int PrixFixe { get => prixFixe; set => prixFixe = value; }
+        public int PrixCourant { get => prixCourant; set => prixCourant = value; }
+        public Cotation Cotation { get => cotation; set => cotation = value; }
 
         /// <summary>
         /// Permet de comparer deux prestations en fonction de leur date.
